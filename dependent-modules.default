@@ -27,12 +27,17 @@ cms:master git://github.com/silverstripe/silverstripe-cms.git
 framework:master git://github.com/silverstripe/sapphire.git
 themes/simple git://github.com/silverstripe-themes/silverstripe-simple.git
 
+mobile:master git://github.com/silverstripe/silverstripe-mobile.git
+#blog:master git://github.com/silverstripe/silverstripe-blog.git
+#translatable:master git://github.com/silverstripe/silverstripe-translatable.git
+spamprotection:master git://github.com/silverstripe/silverstripe-spamprotection.git
+recaptcha:master git://github.com/chillu/silverstripe-recaptcha.git
 
 # The following are the some other modules you might like to import
+
+
 
 # sqlite3:master:1.1.0 git://github.com/smindel/silverstripe-sqlite3.git
 # userforms:master:0.3.0 git://github.com/silverstripe/silverstripe-userforms.git
 # securefiles http://svn.polemic.net.nz/silverstripe/modules/SecureFiles/tags/0.30/
-
-
 

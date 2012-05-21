@@ -28,16 +28,56 @@ class Page_Controller extends ContentController {
 	public static $allowed_actions = array (
 	);
 
-	public function init() {
+	function init() {
 		parent::init();
 
-		// Note: you should use SS template require tags inside your templates 
-		// instead of putting Requirements calls here.  However these are 
-		// included so that our older themes still work
-		Requirements::themedCSS('reset');
-		Requirements::themedCSS('layout'); 
-		Requirements::themedCSS('typography'); 
-		Requirements::themedCSS('form'); 
+
+		$theme = null;
+		if(!empty($_GET['theme'])) {
+			$theme = $_GET['theme'];
+			Session::set('theme', $_GET['theme']);
+		} elseif(Session::get('theme')) {
+			$theme = Session::get('theme');
+		}
+
+		if($theme && Director::fileExists('themes/' . $theme)) {
+			SSViewer::set_theme($theme);
+		}
+		
+		if(!$this->onMobileDomain()) {
+			Requirements::themedCSS('layout');
+			Requirements::themedCSS('form');
+			Requirements::themedCSS('typography');
+		
+			Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
+		
+			Requirements::javascriptTemplate('mysite/javascript/demobar.js', array());
+			Requirements::css('mysite/css/demobar.css');
+			
+			Requirements::customScript(<<<JS
+	var _gaq = _gaq || [];
+	
+	_gaq.push(['_setAccount', 'UA-84547-11']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+JS
+);
+		}
+	}
+	
+	/**
+	 * Hide content on the login pages as the warning message is hard coded in
+	 * the form.
+	 */
+	function Content() {
+		return (Controller::curr() != "Security") ? $this->dbObject('Content') : false;
 	}
 
 }
