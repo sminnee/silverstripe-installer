@@ -1,0 +1,3 @@
+cd `dirname $0`
+cd ..
+rsync -v -r --exclude assets --exclude .git --exclude compass --exclude tools --exclude install.php --exclude mssql --exclude _disable --exclude environmentcheck --delete --chmod=ugo=rx . ss3demo@homer.rackspace.silverstripe.com:/sites/ss3demo/www
