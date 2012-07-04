@@ -32,6 +32,7 @@ mobile:master git://github.com/silverstripe/silverstripe-mobile.git
 #translatable:master git://github.com/silverstripe/silverstripe-translatable.git
 spamprotection:master git://github.com/silverstripe/silverstripe-spamprotection.git
 recaptcha:master git://github.com/chillu/silverstripe-recaptcha.git
+frameworktest:master	git://github.com/silverstripe-labs/silverstripe-frameworktest.git
 
 # The following are the some other modules you might like to import
 
