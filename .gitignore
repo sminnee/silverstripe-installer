@@ -7,3 +7,10 @@ silverstripe-cache
 .settings
 .idea
 .DS_Store
+mobile
+frameworktest
+recaptcha
+spamprotection
+themes/simple
+framework
+cms
